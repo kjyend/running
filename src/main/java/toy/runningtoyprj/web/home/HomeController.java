@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import toy.runningtoyprj.domain.member.Member;
 
+import javax.transaction.Transactional;
+
 @Controller
+@Transactional
 public class HomeController {
 
     @GetMapping("/")

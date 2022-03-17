@@ -10,24 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.member.MemberRepository;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/signup")
+@Transactional
 public class MemberController {
 
     private final MemberRepository memberRepository;
 
     @GetMapping
     public String signupForm(@ModelAttribute("member")Member member){
-        return "member/signup";
+        return "login/signup";
     }
 
     @PostMapping
     public String save(@Valid @ModelAttribute Member member, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "member/signup";
+            return "login/signup";
         }
         memberRepository.save(member);
         return "redirect:/";

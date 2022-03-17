@@ -5,14 +5,16 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter @Setter
 public class Member {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty
@@ -22,6 +24,6 @@ public class Member {
     @NotEmpty
     private String password;
     @NotEmpty
-    private Long DOB;
+    private String DOB;
 
 }

@@ -12,10 +12,12 @@ import toy.runningtoyprj.domain.member.Member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
+@Transactional
 public class LoginController {
 
     private final LoginService loginService;
