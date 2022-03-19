@@ -3,10 +3,7 @@ package toy.runningtoyprj.domain.member;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotEmpty;
 
@@ -14,8 +11,11 @@ import javax.validation.constraints.NotEmpty;
 @Getter @Setter
 public class Member {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
+    @Column(name="member_id")
     private Long id;
+
+
 
     @NotEmpty
     private String loginId;
