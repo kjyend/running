@@ -2,6 +2,7 @@ package toy.runningtoyprj.web.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.member.MemberRepository;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller

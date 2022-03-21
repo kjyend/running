@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public class MemberRepository {
 
-    @PersistenceContext private EntityManager em;
+    @PersistenceContext EntityManager em;
 
     public void save(Member member){
         em.persist(member);
