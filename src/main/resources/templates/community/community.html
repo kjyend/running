@@ -16,6 +16,13 @@
         </form>
     </div>
 </div>
-
+<div>
+    <tr th:each="community : ${community}">
+        <td th:text="${community.startPlace}"></td>
+        <td th:text="${community.endPlace}"></td>
+        <td th:text="${community.street}"></td>
+        <td th:text="${community.dateTime}"></td>
+    </tr>
+</div>
 </body>
 </html>
