@@ -17,12 +17,26 @@
     </div>
 </div>
 <div>
-    <tr th:each="community : ${community}">
-        <td th:text="${community.startPlace}"></td>
-        <td th:text="${community.endPlace}"></td>
-        <td th:text="${community.street}"></td>
-        <td th:text="${community.dateTime}"></td>
-    </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">startPlace</th>
+                <th scope="col">endPlace</th>
+                <th scope="col">street</th>
+                <th scope="col">dateTime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="community : ${community}">
+                <th scope="row" th:text="${community.id}"></th>
+                <td th:text="${community.startPlace}"></td>
+                <td th:text="${community.endPlace}"></td>
+                <td th:text="${community.street}"></td>
+                <td th:text="${community.dateTime}"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
