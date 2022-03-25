@@ -10,8 +10,10 @@ import toy.runningtoyprj.domain.community.Community;
 @Controller
 @Transactional
 public class CommunityController {
+
     @GetMapping("/community")
-    public String home(@ModelAttribute("community") Community community){
+    public String community(@ModelAttribute("community") Community community){
         return "community/community";
     }
+
 }

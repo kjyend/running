@@ -5,7 +5,7 @@
     <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
     <title>프로필</title>
     <style>
-        body{
+        .center{
             margin-top: 150px;
             align-items: center;
             padding-top: 40px;
@@ -31,6 +31,9 @@
             border-color: #dc3545;
             color: #dc3545;
         }
+        .margin-button{
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -44,7 +47,7 @@
         </form>
     </div>
 </div>
-<div class="container">
+<div class="center">
     <form class="form-signin" action="" th:object="${member}">
 
         <div class="mb-3">
