@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
-    <title>게시판</title>
+    <title>record</title>
+    <style>
+
+    </style>
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark">
     <div class="container-md">
-        <a class="navbar-brand" th:onclick="|location.href='@{/}'|">Home</a>
+        <a class="navbar-brand" th:onclick="|location.href='@{/}'|">running</a>
         <form th:action="@{/logout}" method="post">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary" th:onclick="|location.href='login.html'|" type="submit">sign out</button>
@@ -16,7 +19,7 @@
         </form>
     </div>
 </div>
-<div>
+<div class="container">
     <table class="table">
         <thead>
             <tr>
@@ -28,12 +31,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="community : ${community}">
-                <th scope="row" th:text="${community.id}"></th>
-                <td th:text="${community.startPlace}"></td>
-                <td th:text="${community.endPlace}"></td>
-                <td th:text="${community.street}"></td>
-                <td th:text="${community.dateTime}"></td>
+            <tr th:each="community : ${record}">
+                <th scope="row" th:text="${record.id}"></th>
+                <td th:text="${record.startPlace}"></td>
+                <td th:text="${record.endPlace}"></td>
+                <td th:text="${record.street}"></td>
+                <td th:text="${record.dateTime}"></td>
             </tr>
         </tbody>
     </table>

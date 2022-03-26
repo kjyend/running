@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter
-public class Community {
+public class Record {
 
     @Id @GeneratedValue
     private String id;

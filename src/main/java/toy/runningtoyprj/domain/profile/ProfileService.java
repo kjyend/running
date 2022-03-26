@@ -9,4 +9,6 @@ import toy.runningtoyprj.domain.member.MemberRepository;
 public class ProfileService {
 
     private final MemberRepository memberRepository;
+
+
 }
