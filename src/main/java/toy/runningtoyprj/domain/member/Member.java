@@ -2,25 +2,29 @@ package toy.runningtoyprj.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;
+import toy.runningtoyprj.domain.community.Record;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Getter @Setter
+@Table(name = "MEMBER")
 public class Member {
 
     @Id @GeneratedValue
-    @Column(name="member_id")
+    @Column
     private Long id;
 
-    @NotEmpty
+    @Column
     private String loginId;
-    @NotEmpty
+    @Column
     private String name;
-    @NotEmpty
+    @Column
     private String password;
-    @NotEmpty
+    @Column
     private String DOB;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
+    private List<Record> record;
 }
