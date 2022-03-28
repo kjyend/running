@@ -13,7 +13,11 @@ public class MemberRepository {
     @PersistenceContext EntityManager em;
 
     public void save(Member member){
-        em.persist(member);
+        if(member.getId()==null) {
+            em.persist(member);
+        }else {
+            em.merge(member);
+        }
     }
 
     public Optional<Member> findByLoginId(String loginId){
