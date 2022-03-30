@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
     <title>running</title>
+    <style>
+        .margin-button{
+            margin:100px auto;
+        }
+    </style>
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark">
@@ -16,8 +21,8 @@
         </form>
     </div>
 </div>
-<div id="map" style="width:500px;height:400px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{KAKAO_API_KEY}}"></script>
+<div class="margin-button" id="map" style="width:500px;height:400px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
 <script>
     var container = document.getElementById('map');
     var options = {
@@ -27,5 +32,21 @@
 
     var map = new kakao.maps.Map(container, options);
 </script>
+<div class="mb-3">
+    <div class="mb-3">
+        <input type="text" id="minuteTime" class="form-control">분
+    </div>
+    <div class="mb-3">
+        <input type="text" id="secondTime" class="form-control">초
+    </div>
+    <div class="mb-3">
+        <input type="text" id="km" class="form-control">km
+    </div>
+    <button type="submit" class="w-100 btn btn-lg btn-primary">측정</button>
+</div>
+<div class="margin-top">
+    <button class="w-25 btn btn-primary" th:onclick="|location.href='@{/profile}'|" type="submit">프로필</button>
+    <button class="w-25 btn btn-primary" th:onclick="|location.href='@{/record}'|" type="submit">측정</button>
+</div>
 </body>
 </html>

@@ -38,12 +38,12 @@ public class MemberController {
     }
 
     @GetMapping("/modify")
-    public String updateForm(@ModelAttribute("Member") Member member){
+    public String updateForm(@ModelAttribute("member") Member member){
         return "profile/modify";
     }
 
     @PostMapping("/modify")
-    public String update(@ModelAttribute("Member") Member member){
+    public String update(@ModelAttribute("member") Member member){
         memberService.saveMember(member);
         return "redirect:/profile/profile";
     }

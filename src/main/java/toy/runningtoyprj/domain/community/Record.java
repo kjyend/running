@@ -16,13 +16,11 @@ public class Record {
     private String id;
 
     @Column
-    private String loginId;
-    @Column
-    private String startPlace;//시작 위치
-    @Column
-    private String endPlace;// 종료 위치
-    @Column
     private Long street;//km수
+    @Column
+    private Long minuteTime;//기록 시간
+    @Column
+    private Long secondTime;
 
     @Column
     private Long dateTime;//날짜 시간
