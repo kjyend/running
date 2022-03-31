@@ -24,18 +24,18 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">startPlace</th>
-                <th scope="col">endPlace</th>
                 <th scope="col">street</th>
+                <th scope="col">minuteTime</th>
+                <th scope="col">secondTime</th>
                 <th scope="col">dateTime</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="community : ${record}">
                 <th scope="row" th:text="${record.id}"></th>
-                <td th:text="${record.startPlace}"></td>
-                <td th:text="${record.endPlace}"></td>
                 <td th:text="${record.street}"></td>
+                <td th:text="${record.minuteTime}"></td>
+                <td th:text="${record.secondTime}"></td>
                 <td th:text="${record.dateTime}"></td>
             </tr>
         </tbody>

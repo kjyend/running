@@ -27,4 +27,5 @@ public class Member {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
     private List<Record> record;
+
 }
