@@ -1,23 +1,22 @@
 package toy.runningtoyprj.web.member;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import toy.runningtoyprj.domain.member.Member;
-import toy.runningtoyprj.domain.member.MemberRepository;
 import toy.runningtoyprj.domain.member.MemberService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
-
+@Slf4j
 @Transactional
 public class MemberController {
 
@@ -45,11 +44,13 @@ public class MemberController {
     @PostMapping("/modify")
     public String update(@ModelAttribute("member") Member member){
         memberService.saveMember(member);
-        return "redirect:/profile/profile";
+        return "redirect:/";
     }
 
     @GetMapping("/profile")
-    public String profile(@ModelAttribute("member") Member member){
+    public String profile(@ModelAttribute("member") Member member, HttpServletRequest request){
+        log.info("Member123={}",request.getHeaderNames());
+        log.info("Member234={}");
         return "profile/profile";
     }
 }

@@ -48,19 +48,19 @@
     </div>
 </div>
 <div class="center">
-    <form class="form-signin" action="" th:object="${member}">
+    <form class="form-signin" action="" th:object="${member}" method="get">
 
         <div class="mb-3">id:
-            <div th:text="${member.loginId}"></div>
+            <div th:text="*{loginId}"></div>
         </div>
         <div class="mb-3">password:
-            <span th:text="*{password}">[(${member.loginId})]</span>
+            <div th:text="*{password}"></div>
         </div>
         <div class="mb-3">name:
-            <span th:utext="${member.name}"></span>
+            <div th:text="*{name}"></div>
         </div>
         <div class="mb-3">DOB:
-            <span text="*{DOB}"></span>
+            <div th:text="*{DOB}"></div>
         </div>
         <div class="margin-button">
             <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='home.html'"

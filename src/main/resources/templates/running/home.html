@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
     <title>running</title>
     <style>
-        .margin-button{
-            margin:100px auto;
-        }
         .button-side{
-            margin: auto;
+            margin: 100px auto;
             width: 50%;
         }
     </style>
@@ -25,26 +22,9 @@
         </form>
     </div>
 </div>
-<div class="margin-button" id="map" style="width:1000px;height:400px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
-<script>
-    var container = document.getElementById('map');
-    var options = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3
-    };
-
-    var map = new kakao.maps.Map(container, options);
-</script>
-<div class="button-side">
-    <input type="text" id="minuteTime" >분
-    <input type="text" id="secondTime" >초
-    <input type="text" id="km">km
-    <button type="submit" class="btn btn-group-sm btn-primary">측정</button>
-</div>
 <div class="button-side">
     <button class="w-25 btn btn-primary" th:onclick="|location.href='@{/profile}'|" type="submit">프로필</button>
-    <button class="w-25 btn btn-primary" th:onclick="|location.href='@{/record}'|" type="submit">기록</button>
+    <button class="w-25 btn btn-primary" th:onclick="|location.href='@{/check}'|" type="submit">기록</button>
 </div>
 </body>
 </html>

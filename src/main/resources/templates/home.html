@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
     <title>running</title>
-    <style>
-
-        .margin-button{
-            margin:100px auto;
-            align-items: center;
-        }
-
-    </style>
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark">
@@ -23,16 +15,6 @@
         </div>
     </div>
 </div>
-<div class="margin-button" id="map" style="width:500px;height:400px;" ></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
-<script>
-    var container = document.getElementById('map');
-    var options = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3
-    };
 
-    var map = new kakao.maps.Map(container, options);
-</script>
 </body>
 </html>

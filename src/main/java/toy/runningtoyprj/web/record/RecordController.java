@@ -16,4 +16,9 @@ public class RecordController {
         return "record/record";
     }
 
+    @GetMapping("/check")
+    public String check(@ModelAttribute("record") Record record){
+        return "record/check";
+    }
+
 }
