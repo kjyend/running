@@ -2,7 +2,7 @@ package toy.runningtoyprj.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;
-import toy.runningtoyprj.domain.community.Record;
+import toy.runningtoyprj.domain.record.Record;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package toy.runningtoyprj.domain.community;
+package toy.runningtoyprj.domain.record;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

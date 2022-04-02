@@ -1,4 +1,4 @@
-package toy.runningtoyprj.domain.community;
+package toy.runningtoyprj.domain.record;
 
 
 import lombok.Getter;
@@ -19,8 +19,6 @@ public class Record {
     private Long street;//km수
     @Column
     private Long minuteTime;//기록 시간
-    @Column
-    private Long secondTime;
 
     @Column
     private Long dateTime;//날짜 시간
