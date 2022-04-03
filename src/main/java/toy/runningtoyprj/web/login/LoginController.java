@@ -1,6 +1,7 @@
 package toy.runningtoyprj.web.login;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -20,7 +21,8 @@ import javax.validation.Valid;
 @Transactional
 public class LoginController {
 
-    private final LoginService loginService;
+     @Autowired
+     LoginService loginService;
 
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("member")Member member){

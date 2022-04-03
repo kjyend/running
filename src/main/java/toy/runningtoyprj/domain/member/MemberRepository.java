@@ -27,4 +27,9 @@ public class MemberRepository {
     public List<Member> findAll(){
         return em.createQuery("select m from Member m",Member.class).getResultList();
     }
+
+    public Optional<Member> MemberInformation(String loginId){
+        Member member= em.find(Member.class,loginId);
+        return Optional.ofNullable(member);//회원조회
+    }
 }

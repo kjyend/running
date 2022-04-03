@@ -24,6 +24,6 @@ public class Record {
     private Long dateTime;//날짜 시간
 
     @ManyToOne(targetEntity = Member.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member")
     private Member member;
 }

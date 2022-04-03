@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import toy.runningtoyprj.domain.record.Record;
 import toy.runningtoyprj.domain.record.RecordRepository;
 
@@ -21,9 +22,14 @@ public class RecordController {
         return "record/record";
     }
 
+    @PostMapping("/record")
+    public String saveCheck(@ModelAttribute("record")Record record){
+        recordRepository.save(record);
+        return "redirect:/check";
+    }
+
     @GetMapping("/check")
     public String check(@ModelAttribute("record") Record record){
-        recordRepository.save(record);
         return "record/check";
     }
 

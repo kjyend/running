@@ -23,7 +23,7 @@ public class Member {
     @Column
     private String password;
     @Column
-    private String DOB;
+    private String dob;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
     private List<Record> record;

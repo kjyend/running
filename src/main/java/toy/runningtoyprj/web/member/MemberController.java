@@ -2,6 +2,7 @@ package toy.runningtoyprj.web.member;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 @Transactional
 public class MemberController {
 
-    private final MemberService memberService;
+    @Autowired MemberService memberService;
 
     @GetMapping("/signup")
     public String signupForm(@ModelAttribute("member")Member member){
@@ -48,9 +49,8 @@ public class MemberController {
     }
 
     @GetMapping("/profile")
-    public String profile(@ModelAttribute("member") Member member, HttpServletRequest request){
-        log.info("Member123={}",request.getHeaderNames());
-        log.info("Member234={}");
+    public String profile(@ModelAttribute("member") Member member){//회원 조회
+        memberService.findMember(member.getLoginId());
         return "profile/profile";
     }
 }
