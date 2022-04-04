@@ -5,14 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.member.MemberService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -37,8 +38,10 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/modify")
+    @GetMapping( "/modify")
     public String updateForm(@ModelAttribute("member") Member member){
+        log.info("member={}",member.getId());
+        memberService.findOne(member.getId());
         return "profile/modify";
     }
 
@@ -50,7 +53,7 @@ public class MemberController {
 
     @GetMapping("/profile")
     public String profile(@ModelAttribute("member") Member member){//회원 조회
-        memberService.findMember(member.getLoginId());
+        //memberService.findMember(member.getLoginId());
         return "profile/profile";
     }
 }

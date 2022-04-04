@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -15,7 +14,7 @@ public class MemberService {
         memberRepository.save(member);
     }
 
-    public Optional<Member> findMember(String loginId){//회원 조회
-        return memberRepository.MemberInformation(loginId);
+    public Member findOne(Long id){
+        return memberRepository.findOne(id);
     }
 }
