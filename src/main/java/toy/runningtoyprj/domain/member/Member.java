@@ -13,7 +13,7 @@ import java.util.List;
 public class Member {
 
     @Id @GeneratedValue
-    @Column
+    @Column(name="member_id")
     private Long id;
 
     @Column
@@ -26,6 +26,7 @@ public class Member {
     private String dob;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
+    @Column
     private List<Record> record;
 
 }

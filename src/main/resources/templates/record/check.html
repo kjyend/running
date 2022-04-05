@@ -302,10 +302,14 @@
     }
 
 </script>
-<div class="button-side" >
-    <input type="text" id="minuteTime" >분
-    <input type="text" id="m">m
-    <button type="submit" class="btn btn-group-sm btn-primary" th:onclick="|location.href='@{/record}'|" method="post" >측정</button>
+<div class="button-side">
+    <form action="" th:object="${record}" method="post">
+        <input type="text" id="minuteTime" th:field="*{minuteTime}" class="md-3 form-control" >분
+        <input type="text" id="street" th:field="*{street}" class="md-3 form-control">m
+        <button type="submit" class="btn btn-group-sm btn-primary" th:onclick="|location.href='@{/check}'|">측정</button>
+    </form>
+    <button type="submit" class="btn btn-group-sm btn-primary" th:onclick="|location.href='@{/record}'|">게시판</button>
 </div>
+
 </body>
 </html>
