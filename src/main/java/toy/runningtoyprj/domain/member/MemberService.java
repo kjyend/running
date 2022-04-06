@@ -17,4 +17,8 @@ public class MemberService {
     public Member findOne(Long id){
         return memberRepository.findOne(id);
     }
+
+    public Member findLogin(String loginId){
+        return memberRepository.findByLoginId(loginId).filter(m->m.getLoginId().equals(loginId)).orElse(null);
+    }
 }

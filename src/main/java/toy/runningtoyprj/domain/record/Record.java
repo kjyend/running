@@ -3,10 +3,11 @@ package toy.runningtoyprj.domain.record;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import toy.runningtoyprj.domain.member.Member;
 
 import javax.persistence.*;
+
 
 @Entity
 @Getter @Setter
@@ -23,8 +24,8 @@ public class Record {
     private Long minuteTime;//기록 시간
 
     @Column
-    @CreatedDate
-    private Long dateTime;//날짜 시간
+    @LastModifiedDate
+    private String dateTime;//날짜 시간
 
     @ManyToOne(targetEntity = Member.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "member")
