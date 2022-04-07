@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import toy.runningtoyprj.domain.member.Member;
-import toy.runningtoyprj.domain.member.MemberService;
 import toy.runningtoyprj.domain.record.Record;
-import toy.runningtoyprj.domain.record.RecordRepository;
 import toy.runningtoyprj.domain.record.RecordService;
-
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -24,15 +20,10 @@ public class RecordController {
 
     @Autowired
     RecordService recordService;
-    @Autowired
-    MemberService memberService;
+
 
     @GetMapping("/record")
-    public String community(@SessionAttribute(name = "loginMember",required = false) Member loginMember, Model model){
-        if(loginMember==null){
-            return "home";
-        }
-        model.addAttribute("member",loginMember);
+    public String community(@ModelAttribute("record")Record record){
         return "record/record";
     }
 
@@ -48,7 +39,7 @@ public class RecordController {
 
     @PostMapping("/check")
     public String saveCheck(@ModelAttribute("record")Record record){
-        recordService.saveRecord(record);
+        recordService.saveRecord(record);//세션값을 확인해서 같이 db에 저장시킴
         return "redirect:/check";
     }
 

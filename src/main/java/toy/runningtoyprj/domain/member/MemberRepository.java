@@ -1,7 +1,9 @@
 package toy.runningtoyprj.domain.member;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import toy.runningtoyprj.domain.record.Record;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,4 +35,11 @@ public class MemberRepository {
     public Member findOne(Long id) {
         return em.find(Member.class, id);
     }
+
+
+    public Member memberUpdate(Record record){
+        return Member.createRecord(record);
+    }
+
+
 }

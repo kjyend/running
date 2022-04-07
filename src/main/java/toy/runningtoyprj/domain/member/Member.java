@@ -5,6 +5,7 @@ import lombok.Setter;
 import toy.runningtoyprj.domain.record.Record;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,19 @@ public class Member {
     private String dob;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
-    @Column
-    private List<Record> record;
+    private List<Record> records=new ArrayList<>();
+
+     public void addRecord(Record record){
+        getRecords().add(record);
+        record.setMember(this);
+    }
+
+    public static Member createRecord(Record... records){
+        Member member=new Member();
+        for (Record record : records) {
+            member.addRecord(record);
+        }
+        return member;
+    }
 
 }
