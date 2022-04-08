@@ -3,6 +3,7 @@ package toy.runningtoyprj.domain.record;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import toy.runningtoyprj.domain.member.Member;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name = "RECORD")
+@Slf4j
 public class Record {
 
     @Id @GeneratedValue

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.member.MemberService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -36,9 +38,9 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping( "/modify")
+    @GetMapping( "/modify")//파라미터나 다른 값으로 받아야한다.
     public String updateForm(@ModelAttribute("member") Member member){
-        memberService.findOne(member.getId());
+
         return "profile/modify";
     }
 
@@ -49,8 +51,8 @@ public class MemberController {
     }
 
     @GetMapping("/profile")
-    public String profile(@ModelAttribute("member") Member member){//회원 조회
-        //memberService.findMember(member.getLoginId());
+    public String profile(@ModelAttribute("member") Member member){
+        memberService.findOne(member.getLoginId());
         return "profile/profile";
     }
 }

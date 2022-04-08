@@ -39,7 +39,7 @@ public class RecordController {
 
     @PostMapping("/check")
     public String saveCheck(@ModelAttribute("record")Record record){
-        recordService.saveRecord(record);//세션값을 확인해서 같이 db에 저장시킴
+        recordService.saveRecord(record);
         return "redirect:/check";
     }
 

@@ -2,8 +2,8 @@ package toy.runningtoyprj.domain.member;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import toy.runningtoyprj.domain.record.Record;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Slf4j
-public class MemberRepository {
+public class MemberRepository{
 
     @PersistenceContext EntityManager em;
 
@@ -32,14 +31,8 @@ public class MemberRepository {
         return em.createQuery("select m from Member m",Member.class).getResultList();
     }
 
-    public Member findOne(Long id) {
-        return em.find(Member.class, id);
+    public Member findOne(String loginId) {
+        return em.find(Member.class, loginId);
     }
-
-
-    public Member memberUpdate(Record record){
-        return Member.createRecord(record);
-    }
-
 
 }

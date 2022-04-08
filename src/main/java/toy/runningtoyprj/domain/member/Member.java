@@ -2,6 +2,7 @@ package toy.runningtoyprj.domain.member;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import toy.runningtoyprj.domain.record.Record;
 
 import javax.persistence.*;
@@ -29,17 +30,5 @@ public class Member {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
     private List<Record> records=new ArrayList<>();
 
-     public void addRecord(Record record){
-        getRecords().add(record);
-        record.setMember(this);
-    }
-
-    public static Member createRecord(Record... records){
-        Member member=new Member();
-        for (Record record : records) {
-            member.addRecord(record);
-        }
-        return member;
-    }
 
 }
