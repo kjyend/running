@@ -1,5 +1,6 @@
 package toy.runningtoyprj.domain.member;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 
 @Service
+@RequiredArgsConstructor
 @Transactional
 public class MemberService {
 
@@ -22,8 +24,15 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    //find하다가 예외남
-    public Member findOne(String loginId){
-        return memberRepository.findOne(loginId);
+    public Member findOne(Long id){
+        return memberRepository.findOne(id);
+    }
+
+    public void updateMember(Long id,String loginId, String password, String name, String dob) {
+        Member member=memberRepository.findOne(id);
+        member.setLoginId(loginId);
+        member.setPassword(password);
+        member.setName(name);
+        member.setDob(dob);
     }
 }
