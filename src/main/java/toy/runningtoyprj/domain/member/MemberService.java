@@ -28,11 +28,11 @@ public class MemberService {
         return memberRepository.findOne(id);
     }
 
-    public void updateMember(Long id,String loginId, String password, String name, String dob) {
-        Member member=memberRepository.findOne(id);
-        member.setLoginId(loginId);
-        member.setPassword(password);
-        member.setName(name);
-        member.setDob(dob);
+    public void updateMember(Member member) {
+        Member memberFind=memberRepository.findOne(member.getId());
+        memberFind.setLoginId(member.getLoginId());
+        memberFind.setPassword(member.getPassword());
+        memberFind.setName(member.getName());
+        memberFind.setDob(member.getDob());
     }
 }

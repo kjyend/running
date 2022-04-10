@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,20 +37,15 @@ public class MemberController {
 
     @GetMapping( "/modify")
     public String updateForm(@ModelAttribute("member") Member member){
-        log.info("==={}",member.getId());//null
         return "profile/modify";
     }
 
     @PostMapping("/modify")
     public String update(@ModelAttribute("member") Member member){
         log.info("==={}",member.getLoginId()); //값 나옴
-        memberService.updateMember(member.getId(),member.getLoginId(),member.getPassword(),member.getName(),member.getDob());
+        memberService.updateMember(member);
         return "redirect:/";
     }
 
-    @GetMapping("/profile")
-    public String profile(@ModelAttribute("member") Member member, Model model){
-        return "profile/profile";
-    }
-
 }
+
