@@ -21,7 +21,6 @@ public class RecordController {
     @Autowired
     RecordService recordService;
 
-
     @GetMapping("/record")
     public String community(@ModelAttribute("record")Record record){
         return "record/record";

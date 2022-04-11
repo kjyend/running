@@ -2,7 +2,6 @@ package toy.runningtoyprj.web.home;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -11,7 +10,6 @@ import toy.runningtoyprj.domain.member.Member;
 
 
 @Controller
-@Transactional
 @Slf4j
 public class HomeController {
 
@@ -22,7 +20,6 @@ public class HomeController {
             return "home";
         }
         model.addAttribute("member",loginMember);
-        log.info("==={}",model);
         return "/running/home";
     }
 

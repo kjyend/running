@@ -1,14 +1,11 @@
 package toy.runningtoyprj.web.login;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import toy.runningtoyprj.domain.login.LoginService;
 import toy.runningtoyprj.domain.member.Member;
 
@@ -18,7 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
-@Transactional
+@Slf4j
 public class LoginController {
 
      @Autowired
@@ -41,8 +38,9 @@ public class LoginController {
             bindingResult.reject("loginFail","아이디 또는 비밀번호가 맞지 않습니다.");
             return "login/login";
         }
-        HttpSession session=request.getSession();//반대 쪽에서 하면 다른값 나오나?
+        HttpSession session=request.getSession();
         session.setAttribute("loginMember",loginMember);
+        log.info("123=={}==123",session.getAttribute("loginMember"));
         return "redirect:"+redirectURL;
     }
     @PostMapping("/logout")
