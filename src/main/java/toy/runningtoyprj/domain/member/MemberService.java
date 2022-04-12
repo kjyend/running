@@ -28,8 +28,8 @@ public class MemberService {
         return memberRepository.findOne(id);
     }
 
-    public void updateMember(Member member) {
-        Member memberFind=memberRepository.findOne(member.getId());
+    public void updateMember(Long id,Member member) {
+        Member memberFind=memberRepository.findOne(id);
         memberFind.setLoginId(member.getLoginId());
         memberFind.setPassword(member.getPassword());
         memberFind.setName(member.getName());

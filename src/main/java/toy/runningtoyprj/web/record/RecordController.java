@@ -13,6 +13,10 @@ import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.record.Record;
 import toy.runningtoyprj.domain.record.RecordService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Optional;
+
 @Slf4j
 @Controller
 @Transactional
@@ -21,8 +25,22 @@ public class RecordController {
     @Autowired
     RecordService recordService;
 
+    @GetMapping("/check")
+    public String check(@ModelAttribute("record") Record record){
+        return "record/check";
+    }
+
+    @PostMapping("/check")
+    public String saveCheck(@ModelAttribute("record")Record record, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        recordService.saveRecord(record, (Member) session.getAttribute("loginMember"));
+        return "redirect:/check";
+    }
+
     @GetMapping("/record")
-    public String community(@ModelAttribute("record")Record record){
+    public String community(@ModelAttribute("record")Record record, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        recordService.findRecord();
         return "record/record";
     }
 
@@ -30,16 +48,4 @@ public class RecordController {
     public String checkRecord(@ModelAttribute("record")Record record){
         return "redirect:/record";
     }
-
-    @GetMapping("/check")
-    public String check(@ModelAttribute("record") Record record){
-        return "record/check";
-    }
-
-    @PostMapping("/check")
-    public String saveCheck(@ModelAttribute("record")Record record){
-        recordService.saveRecord(record);
-        return "redirect:/check";
-    }
-
 }

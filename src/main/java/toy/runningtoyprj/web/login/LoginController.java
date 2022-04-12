@@ -1,7 +1,6 @@
 package toy.runningtoyprj.web.login;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,11 +14,10 @@ import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
 public class LoginController {
 
-     @Autowired
-     LoginService loginService;
+    @Autowired
+    LoginService loginService;
 
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("member")Member member){
@@ -34,13 +32,14 @@ public class LoginController {
         }
         Member loginMember=loginService.login(member.getLoginId(),member.getPassword());
 
+
         if(loginMember==null){
             bindingResult.reject("loginFail","아이디 또는 비밀번호가 맞지 않습니다.");
             return "login/login";
         }
         HttpSession session=request.getSession();
         session.setAttribute("loginMember",loginMember);
-        log.info("123=={}==123",session.getAttribute("loginMember"));
+        session.setAttribute("memberId",loginMember.getId());
         return "redirect:"+redirectURL;
     }
     @PostMapping("/logout")
