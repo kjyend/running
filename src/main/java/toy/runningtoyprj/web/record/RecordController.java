@@ -15,6 +15,7 @@ import toy.runningtoyprj.domain.record.RecordService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -40,7 +41,7 @@ public class RecordController {
     @GetMapping("/record")
     public String community(@ModelAttribute("record")Record record, HttpServletRequest request){
         HttpSession session = request.getSession();
-        recordService.findRecord();
+        recordService.findRecord(session.getAttribute("memberId"));
         return "record/record";
     }
 
