@@ -30,11 +30,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="community : ${record}">
-                <th scope="row" th:text="${record.id}"></th>
-                <td th:text="${record.street}"></td>
-                <td th:text="${record.minuteTime}"></td>
-                <td th:text="${record.dateTime}"></td>
+            <tr th:each="community,i : ${record}">
+                <th scope="row" th:text="${i.index+1}"></th>
+                <td th:text="${community.street}"></td>
+                <td th:text="${community.minuteTime}"></td>
+                <td th:text="${community.dateTime}"></td>
             </tr>
         </tbody>
     </table>

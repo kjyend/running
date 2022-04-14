@@ -18,8 +18,6 @@ public class RecordService {
 
     @Autowired RecordRepository recordRepository;
 
-    @Autowired
-    MemberRepository memberRepository;
 
     public void saveRecord(Record record, Member member){
         record.setMember(member);
@@ -32,7 +30,7 @@ public class RecordService {
         List<Record> recordList = null;
         log.info("222=={}",memberId);
         for (Record record : all) {
-            log.info("111=={}",record.getMember().toString());
+            log.info("111=={}",record.getMember());
             if(memberId.equals(record.getMember().toString())){
                 recordList= (List<Record>) record;
             }
@@ -45,6 +43,9 @@ public class RecordService {
         return recordRepository.findById(id);
     }
 
+    public List<Record> findAll(){
+        return recordRepository.findAll();
+    }
 
      //member값을 가지고 물품들을 조회해야한다.
 

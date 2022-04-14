@@ -35,15 +35,21 @@ public class RecordController {
     public String saveCheck(@ModelAttribute("record")Record record, HttpServletRequest request){
         HttpSession session = request.getSession();
         recordService.saveRecord(record, (Member) session.getAttribute("loginMember"));
+        log.info("member=={}",session.getAttribute("loginMember"));
         return "redirect:/check";
     }
 
     @GetMapping("/record")
-    public String community(@ModelAttribute("record")Record record, HttpServletRequest request){
+    public String community(Model model,HttpServletRequest request){
+/*
         HttpSession session = request.getSession();
         recordService.findRecord(session.getAttribute("memberId"));
+*/
+
+        List<Record> all = recordService.findAll();
+        model.addAttribute("record",all);
         return "record/record";
-    }
+    }//로그인마다 체크해야한다.
 
     @PostMapping("/record")
     public String checkRecord(@ModelAttribute("record")Record record){

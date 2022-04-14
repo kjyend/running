@@ -40,6 +40,7 @@ public class LoginController {
         HttpSession session=request.getSession();
         session.setAttribute("loginMember",loginMember);
         session.setAttribute("memberId",loginMember.getId());
+
         return "redirect:"+redirectURL;
     }
     @PostMapping("/logout")

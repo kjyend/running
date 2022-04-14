@@ -3,6 +3,7 @@ package toy.runningtoyprj.domain.record;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import toy.runningtoyprj.domain.member.Member;
 
@@ -30,5 +31,6 @@ public class Record {
     @ManyToOne(targetEntity = Member.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "member")
     private Member member;
+
 
 }
