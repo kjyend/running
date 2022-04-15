@@ -41,15 +41,16 @@ public class RecordController {
 
     @GetMapping("/record")
     public String community(Model model,HttpServletRequest request){
-/*
         HttpSession session = request.getSession();
-        recordService.findRecord(session.getAttribute("memberId"));
-*/
-
         List<Record> all = recordService.findAll();
-        model.addAttribute("record",all);
+        for (Record record : all) {
+            if(record.getMember().getId().equals(session.getAttribute("memberId"))){
+                //어떤값을 넣어야할지 애매하다.
+            }
+        }
+        model.addAttribute("record",all);//다른값을 넣어야한다.
         return "record/record";
-    }//로그인마다 체크해야한다.
+    }//로그인마다 체크해야한다.확인
 
     @PostMapping("/record")
     public String checkRecord(@ModelAttribute("record")Record record){

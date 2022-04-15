@@ -24,20 +24,6 @@ public class RecordService {
         recordRepository.save(record);
     }
 
-    //tostring 해야함
-    public List<Record> findRecord(Object memberId){
-        List<Record> all = recordRepository.findAll();
-        List<Record> recordList = null;
-        log.info("222=={}",memberId);
-        for (Record record : all) {
-            log.info("111=={}",record.getMember());
-            if(memberId.equals(record.getMember().toString())){
-                recordList= (List<Record>) record;
-            }
-        }
-        log.info("=={}",recordList);
-        return recordList;
-    }
 
     public Optional<Record> fineOne(Long id){
         return recordRepository.findById(id);
@@ -46,7 +32,5 @@ public class RecordService {
     public List<Record> findAll(){
         return recordRepository.findAll();
     }
-
-     //member값을 가지고 물품들을 조회해야한다.
 
 }
