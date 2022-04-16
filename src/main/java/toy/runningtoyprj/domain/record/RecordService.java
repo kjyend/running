@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.member.MemberRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,16 @@ public class RecordService {
 
     public List<Record> findAll(){
         return recordRepository.findAll();
+    }
+
+    public List<Record> checkMember(Long id,List<Record> record){
+        List<Record> checkUser=new ArrayList<>();
+        for (Record records : record) {
+            if(records.getMember().getId().equals(id)){
+                checkUser.add(records);
+            }
+        }
+        return checkUser;
     }
 
 }

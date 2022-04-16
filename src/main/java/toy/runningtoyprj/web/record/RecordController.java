@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import toy.runningtoyprj.domain.member.Member;
 import toy.runningtoyprj.domain.record.Record;
 import toy.runningtoyprj.domain.record.RecordService;
@@ -16,7 +15,6 @@ import toy.runningtoyprj.domain.record.RecordService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -43,14 +41,12 @@ public class RecordController {
     public String community(Model model,HttpServletRequest request){
         HttpSession session = request.getSession();
         List<Record> all = recordService.findAll();
-        for (Record record : all) {
-            if(record.getMember().getId().equals(session.getAttribute("memberId"))){
-                //어떤값을 넣어야할지 애매하다.
-            }
-        }
-        model.addAttribute("record",all);//다른값을 넣어야한다.
+
+        List<Record> recordList = recordService.checkMember((Long) session.getAttribute("memberId"), all);
+
+        model.addAttribute("record",recordList);
         return "record/record";
-    }//로그인마다 체크해야한다.확인
+    }
 
     @PostMapping("/record")
     public String checkRecord(@ModelAttribute("record")Record record){
