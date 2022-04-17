@@ -23,12 +23,12 @@ public class MemberController {
 
     @GetMapping("/signup")
     public String signupForm(@ModelAttribute("member")Member member){
-        return "login/signup";
+        return "login/signup";//회원 가입 form
     }
 
     @PostMapping("/signup")
     public String save(@Valid @ModelAttribute Member member, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors()){//회원가입에 오류가 이있다면 실행된다.
             return "login/signup";
         }
         memberService.saveMember(member);
@@ -37,14 +37,13 @@ public class MemberController {
 
     @GetMapping( "/modify")
     public String updateForm(@ModelAttribute("member") Member member){
-        return "profile/modify";
+        return "profile/modify"; //회원 수정 form
     }
 
     @PostMapping("/modify")
-    public String update(@ModelAttribute("member") Member member,HttpServletRequest request){
-        HttpSession session = request.getSession();
-        memberService.updateMember((Long) session.getAttribute("memberId"),member);//세션값,맴버값을 쏘고 세션값을 확인하고 멤버값으로 변경
-
+    public String update(@ModelAttribute("member") Member member,HttpServletRequest request){// 회원 수정
+        HttpSession session = request.getSession(); //세션값을 얻는다.
+        memberService.updateMember((Long) session.getAttribute("memberId"),member);//세션을 통해서 회원수정한다.
         return "redirect:/";
     }
 

@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@SessionAttribute(name = "loginMember",required = false)Member loginMember, Model model) {
-        if(loginMember==null){
+        if(loginMember==null){//세션을 통해서 로그인 상태인지 아닌지 확인한다. null이면 home화면 출력
             return "home";
         }
         model.addAttribute("member",loginMember);

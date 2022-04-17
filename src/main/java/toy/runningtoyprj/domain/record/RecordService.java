@@ -20,21 +20,16 @@ public class RecordService {
     @Autowired RecordRepository recordRepository;
 
 
-    public void saveRecord(Record record, Member member){
+    public void saveRecord(Record record, Member member){// 기록을 저장할때 연동된 member 값을 같이 저장한다.
         record.setMember(member);
         recordRepository.save(record);
-    }
-
-
-    public Optional<Record> fineOne(Long id){
-        return recordRepository.findById(id);
     }
 
     public List<Record> findAll(){
         return recordRepository.findAll();
     }
 
-    public List<Record> checkMember(Long id,List<Record> record){
+    public List<Record> checkMember(Long id,List<Record> record){//record 중 member 값을 통해서 기록에 자신의 것만 게시하게 한다.
         List<Record> checkUser=new ArrayList<>();
         for (Record records : record) {
             if(records.getMember().getId().equals(id)){

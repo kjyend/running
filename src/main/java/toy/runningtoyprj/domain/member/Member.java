@@ -19,16 +19,16 @@ public class Member {
     private Long id;
 
     @Column
-    private String loginId;
+    private String loginId;//로그인 아이디
     @Column
-    private String name;
+    private String name; // 이름
     @Column
-    private String password;
+    private String password; //패스워드
     @Column
-    private String dob;
+    private String dob; // 출생월일
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
-    private List<Record> records=new ArrayList<>();
+    private List<Record> records=new ArrayList<>(); //기록과 연동
 
 
 }

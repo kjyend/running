@@ -17,7 +17,7 @@ public class MemberRepository{
 
     @PersistenceContext EntityManager em;
 
-    public void save(Member member){
+    public void save(Member member){ // 회원을 db에 저장한다.
         if(member.getId()==null) {
             em.persist(member);
         }else {
@@ -25,7 +25,7 @@ public class MemberRepository{
         }
     }
 
-    public Optional<Member> findByLoginId(String loginId){
+    public Optional<Member> findByLoginId(String loginId){//로그인 아이디 찾기
         return findAll().stream().filter(m->m.getLoginId().equals(loginId)).findFirst();
     }
 

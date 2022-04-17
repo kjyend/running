@@ -21,10 +21,9 @@ public class Record {
     private Long id;
 
     @Column
-    private Long street;//km수
+    private Long street;//m수
     @Column
     private Long minuteTime;//기록 시간
-
     @Column
     private String dateTime;//날짜 시간
 

@@ -16,19 +16,12 @@ public class MemberService {
 
     @Autowired MemberRepository memberRepository;
 
-    public void saveMember(Member member){
+    public void saveMember(Member member){// 회원 가입 목적
         memberRepository.save(member);
     }
     
-    public List<Member> findMembers(){
-        return memberRepository.findAll();
-    }
 
-    public Member findOne(Long id){
-        return memberRepository.findOne(id);
-    }
-
-    public void updateMember(Long id,Member member) {
+    public void updateMember(Long id,Member member) {// 회원 수정 목적
         Member memberFind=memberRepository.findOne(id);
         memberFind.setLoginId(member.getLoginId());
         memberFind.setPassword(member.getPassword());
