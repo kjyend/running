@@ -1,10 +1,8 @@
-package toy.runningtoyprj.domain.member;
+package toy.runningtoyprj.repository;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import toy.runningtoyprj.domain.entity.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

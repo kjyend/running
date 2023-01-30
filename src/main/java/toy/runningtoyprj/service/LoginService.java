@@ -1,9 +1,9 @@
-package toy.runningtoyprj.domain.login;
+package toy.runningtoyprj.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import toy.runningtoyprj.domain.member.Member;
-import toy.runningtoyprj.domain.member.MemberRepository;
+import toy.runningtoyprj.domain.entity.Member;
+import toy.runningtoyprj.repository.MemberRepository;
 
 @Service
 @RequiredArgsConstructor
