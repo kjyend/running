@@ -24,15 +24,16 @@ public class RecordController {
     private final RecordService recordService;
 
     @GetMapping("/check")
-    public String checkForm(RecordDto record,Model model){
-        model.addAttribute("record", record);
+    public String checkForm(RecordDto recordDto,Model model){
+        model.addAttribute("recordDto", recordDto);
         return "record/check"; //기록측정 form
     }
 
     @PostMapping("/check")
-    public String saveCheck(RecordDto record, HttpServletRequest request,Model model){
+    public String saveCheck(RecordDto recordDto, HttpServletRequest request,Model model){
         HttpSession session = request.getSession();
-        recordService.saveRecord(record, (Member) session.getAttribute("loginMember"));//세션값을 통해서 누구인지 알고 기록을 측정한다.
+        log.info("record={}",recordDto.getStreet());
+        recordService.saveRecord(recordDto, (Member) session.getAttribute("loginMember"));//세션값을 통해서 누구인지 알고 기록을 측정한다.
         return "redirect:/check";
     }
 

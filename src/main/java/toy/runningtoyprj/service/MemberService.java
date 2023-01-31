@@ -8,6 +8,7 @@ import toy.runningtoyprj.dto.MemberDto;
 import toy.runningtoyprj.dto.UpdateDto;
 import toy.runningtoyprj.repository.MemberRepository;
 
+import java.util.Optional;
 
 
 @Service
@@ -23,7 +24,7 @@ public class MemberService {
     }
 
     public void updateMember(Long id, UpdateDto member) {// 회원 수정 목적
-        Member memberFind=memberRepository.findOne(id);
+        Member memberFind = memberRepository.findById(id).orElseThrow(()->new IllegalArgumentException("맴버가 없습니다."));
 
         memberFind.builder()
                 .loginId(member.getLoginId())

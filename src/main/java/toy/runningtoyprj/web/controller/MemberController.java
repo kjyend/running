@@ -22,21 +22,6 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/signup")
-    public String signupForm(MemberDto member, Model model){
-        model.addAttribute("member", member);
-        return "login/signup";//회원 가입 form
-    }
-
-    @PostMapping("/signup")
-    public String save(@Valid MemberDto member, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){//회원가입에 오류가 이있다면 실행된다.
-            return "login/signup";
-        }
-        memberService.saveMember(member);
-        return "redirect:/";
-    }
-
     @GetMapping( "/modify")
     public String updateForm(UpdateDto member,Model model){
         model.addAttribute("member",member);
