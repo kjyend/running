@@ -2,7 +2,13 @@
 
 * 지도에서 내가 원하는 운동 거리를 측정한다.
 * 이를 기록하여 갱신한다.
-* 사용한기술: 
+
+<h2>팀원</h2>
+
+* 웹 : 김준영
+* 총원 1명
+
+<h2> 사용한기술 </h2> 
 <div>
   <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" />
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=Spring&logoColor=white" />
@@ -15,7 +21,7 @@
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white" />
 </div>
 
-* 사용 툴:
+<h2> 사용 툴</h2>
 <div>
   <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat&logo=IntelliJ IDEA&logoColor=white" />
   <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white" />
@@ -25,10 +31,13 @@
 <h2> 프로젝트 사용 방법</h2>
 
 
-<h2>팀원</h2>
+<h2> ERD </h2>
 
-* 웹 : 김준영
-* 총원 1명
+<h2> API Docs</h2>
+
+<h2>결과물</h2>
+
+* 결과물
 
 
 <h2>외부리소스</h2>
