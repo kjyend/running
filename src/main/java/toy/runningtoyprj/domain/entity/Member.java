@@ -1,6 +1,8 @@
 package toy.runningtoyprj.domain.entity;
 
 import lombok.*;
+import toy.runningtoyprj.dto.LoginDto;
+import toy.runningtoyprj.dto.MemberDto;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -33,4 +35,21 @@ public class Member {
         this.records = records;
     }
 
+    public MemberDto toMemberDto(){
+        return MemberDto.builder()
+                .id(id)
+                .loginId(loginId)
+                .password(password)
+                .name(name)
+                .dob(dob)
+                .build();
+    }
+
+    public LoginDto toLoginDto(){
+        return LoginDto.builder()
+                .id(id)
+                .loginId(loginId)
+                .password(password)
+                .build();
+    }
 }

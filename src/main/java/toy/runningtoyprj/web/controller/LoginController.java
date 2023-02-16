@@ -41,18 +41,19 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String loginForm(MemberDto memberDto, Model model){
+    public String loginForm(LoginDto memberDto, Model model){
         model.addAttribute("memberDto",memberDto);
         return "/login/login";//로그인 폼
     }
 
     @PostMapping("/login")
-    public String login(@Valid MemberDto memberDto, BindingResult bindingResult,
-                        @RequestParam(defaultValue="/")String redirectURL, HttpServletRequest request){//세션값을 통해서 로그인 실행
+    public String login(@Valid LoginDto memberDto, BindingResult bindingResult,
+                        //@RequestParam(defaultValue="/")String redirectURL,
+                        HttpServletRequest request){//세션값을 통해서 로그인 실행
         if(bindingResult.hasErrors()){//오류가 있으면 다시 로그인 화면으로 간다.
             return "login/login";
         }
-        Member loginMember=loginService.login(memberDto.getLoginId(),memberDto.getPassword()); // 세션값을 통해서 로그인했을때 db에 정보가 있는지 확인
+        LoginDto loginMember=loginService.login(memberDto.getLoginId(),memberDto.getPassword()); // 세션값을 통해서 로그인했을때 db에 정보가 있는지 확인
 
         log.info(">>>{}", loginMember);
         if(loginMember==null){ //db에 정보가 없는경우
@@ -60,11 +61,15 @@ public class LoginController {
             return "redirect:/login";
         }
 
+        log.info(">>>{}", loginMember);
+
         HttpSession session=request.getSession();//db에 있다면 세션값을 저장한다.
-        session.setAttribute("loginMember",loginMember);//로그인 값을 세션 loginMember값에 저장한다.
+        session.setAttribute("loginMember",loginMember.getClass());//로그인 값을 세션 loginMember값에 저장한다.
         session.setAttribute("memberId",loginMember.getId());// member.id값을 세션 memberId에 저장한다.
 
-        return "redirect:"+redirectURL;
+        log.info(">>>{}", loginMember);
+
+        return "redirect:/";//+redirectURL;
     }
 
     @PostMapping("/logout")//로그아웃

@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class RecordController {
@@ -25,14 +24,13 @@ public class RecordController {
 
     @GetMapping("/check")
     public String checkForm(RecordDto recordDto,Model model){
-        model.addAttribute("recordDto", recordDto);
+        model.addAttribute("record", recordDto);
         return "record/check"; //기록측정 form
     }
 
     @PostMapping("/check")
     public String saveCheck(RecordDto recordDto, HttpServletRequest request,Model model){
         HttpSession session = request.getSession();
-        log.info("record={}",recordDto.getStreet());
         recordService.saveRecord(recordDto, (Member) session.getAttribute("loginMember"));//세션값을 통해서 누구인지 알고 기록을 측정한다.
         return "redirect:/check";
     }

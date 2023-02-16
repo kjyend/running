@@ -1,8 +1,10 @@
 package toy.runningtoyprj.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class UpdateDto {
     private Long id;
 
