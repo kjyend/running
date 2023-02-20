@@ -5,7 +5,6 @@ import lombok.Getter;
 import toy.runningtoyprj.domain.entity.Member;
 
 @Getter
-@Builder
 public class MemberDto {
     private Long id;
 
@@ -13,6 +12,15 @@ public class MemberDto {
     private String password;
     private String name;
     private String dob;
+
+    @Builder
+    public MemberDto(Long id, String loginId, String password, String name, String dob) {
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+        this.name = name;
+        this.dob = dob;
+    }
 
     public Member toMemberEntity(){
         return Member.builder()

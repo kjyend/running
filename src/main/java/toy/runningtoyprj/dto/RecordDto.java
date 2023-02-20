@@ -5,7 +5,6 @@ import lombok.Getter;
 import toy.runningtoyprj.domain.entity.Member;
 
 @Getter
-@Builder
 public class RecordDto {
 
     private Long id;
@@ -14,4 +13,13 @@ public class RecordDto {
     private Long minuteTime;
     private String dateTime;
     private Member member;
+
+    @Builder
+    public RecordDto(Long id, Long street, Long minuteTime, String dateTime, Member member) {
+        this.id = id;
+        this.street = street;
+        this.minuteTime = minuteTime;
+        this.dateTime = dateTime;
+        this.member = member;
+    }
 }
