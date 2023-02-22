@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import toy.runningtoyprj.dto.LoginDto;
 import toy.runningtoyprj.dto.MemberDto;
 import toy.runningtoyprj.service.LoginService;
-import toy.runningtoyprj.domain.entity.Member;
 import toy.runningtoyprj.service.MemberService;
 
 import javax.servlet.http.HttpServletRequest;
