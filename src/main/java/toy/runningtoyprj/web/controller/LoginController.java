@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import toy.runningtoyprj.dto.LoginDto;
 import toy.runningtoyprj.dto.MemberDto;
@@ -31,7 +32,7 @@ public class LoginController {
     }
 
     @PostMapping("/signup")
-    public String save(@Valid MemberDto member, BindingResult bindingResult){
+    public String save(@Validated MemberDto member, BindingResult bindingResult){
         if(bindingResult.hasErrors()){//회원가입에 오류가 이있다면 실행된다.
             return "login/signup";
         }
@@ -46,29 +47,23 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid LoginDto memberDto, BindingResult bindingResult,
-                        //@RequestParam(defaultValue="/")String redirectURL,
-                        HttpServletRequest request){//세션값을 통해서 로그인 실행
+    public String login(@Validated LoginDto memberDto, BindingResult bindingResult,
+                        @RequestParam(defaultValue="/")String redirectURL, HttpServletRequest request){//세션값을 통해서 로그인 실행
         if(bindingResult.hasErrors()){//오류가 있으면 다시 로그인 화면으로 간다.
             return "login/login";
         }
         LoginDto loginMember=loginService.login(memberDto.getLoginId(),memberDto.getPassword()); // 세션값을 통해서 로그인했을때 db에 정보가 있는지 확인
 
-        log.info(">>>{}", loginMember);
         if(loginMember==null){ //db에 정보가 없는경우
             bindingResult.reject("loginFail","아이디 또는 비밀번호가 맞지 않습니다.");
-            return "redirect:/login";
+            return "login/login";
         }
 
-        log.info(">>>{}", loginMember);
-
         HttpSession session=request.getSession();//db에 있다면 세션값을 저장한다.
-        session.setAttribute("loginMember",loginMember.getClass());//로그인 값을 세션 loginMember값에 저장한다.
+        session.setAttribute("loginMember",loginMember);//로그인 값을 세션 loginMember값에 저장한다.
         session.setAttribute("memberId",loginMember.getId());// member.id값을 세션 memberId에 저장한다.
 
-        log.info(">>>{}", loginMember);
-
-        return "redirect:/";//+redirectURL;
+        return "redirect:"+redirectURL;
     }
 
     @PostMapping("/logout")//로그아웃

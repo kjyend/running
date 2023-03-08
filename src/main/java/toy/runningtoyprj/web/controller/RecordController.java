@@ -29,7 +29,7 @@ public class RecordController {
     @PostMapping("/check")
     public String saveCheck(RecordDto recordDto, HttpServletRequest request,Model model){
         HttpSession session = request.getSession();
-        recordService.saveRecord(recordDto, (Member) session.getAttribute("loginMember"));//세션값을 통해서 누구인지 알고 기록을 측정한다.
+        recordService.saveRecord(recordDto, (Long) session.getAttribute("memberId"));//세션값을 통해서 누구인지 알고 기록을 측정한다.
         return "redirect:/check";
     }
 

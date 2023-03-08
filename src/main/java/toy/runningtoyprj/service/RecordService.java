@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import toy.runningtoyprj.domain.entity.Member;
 import toy.runningtoyprj.domain.entity.Record;
 import toy.runningtoyprj.dto.RecordDto;
+import toy.runningtoyprj.repository.MemberRepository;
 import toy.runningtoyprj.repository.RecordRepository;
 
 import java.util.ArrayList;
@@ -19,7 +20,12 @@ public class RecordService {
 
     private final RecordRepository recordRepository;
 
-    public void saveRecord(RecordDto record, Member member){// 기록을 저장할때 연동된 member 값을 같이 저장한다.
+    private final MemberRepository memberRepository;
+
+    public void saveRecord(RecordDto record, Long id){// 기록을 저장할때 연동된 member 값을 같이 저장한다.
+
+        Member member = memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+
         //member값 변경해주어야 한다.
         Record saveRecord = Record.builder()
                 .street(record.getStreet())
