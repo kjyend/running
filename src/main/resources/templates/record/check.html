@@ -304,9 +304,9 @@
 </script>
 <div class="button-side row">
     <form action="check" th:object="${record}" method="post">
-        <input type="text" name="minuteTime" id="minuteTime" class="col" th:field="*{minuteTime}" placeholder="시간">분
-        <input type="text" name="street" id="street" class="col" th:field="*{street}" placeholder="거리" >m
-        <input type="text" name="datetime" id="datetime" class="col" th:field="*{dateTime}"placeholder="yy/mm/dd">
+        <input type="text" name="minuteTime" id="minuteTime" class="col" th:field="*{minuteTime}" placeholder="시간" required>분
+        <input type="text" name="street" id="street" class="col" th:field="*{street}" placeholder="거리" required>m
+        <input type="text" name="datetime" id="datetime" class="col" th:field="*{dateTime}"placeholder="yy/mm/dd" required>
         <button type="submit" class="btn btn-group-sm btn-primary">측정</button>
     </form>
     <div class="col">
