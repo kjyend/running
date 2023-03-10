@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import toy.runningtoyprj.domain.entity.Member;
 import toy.runningtoyprj.domain.entity.Record;
 import toy.runningtoyprj.dto.RecordDto;
 import toy.runningtoyprj.service.RecordService;
