@@ -26,7 +26,7 @@ public class LoginController {
 
     @GetMapping("/signup")
     public String signupForm(MemberDto member, Model model){
-        model.addAttribute("member", member);
+        model.addAttribute("memberDto", member);
         return "login/signup";//회원 가입 form
     }
 

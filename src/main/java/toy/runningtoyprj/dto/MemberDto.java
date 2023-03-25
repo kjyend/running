@@ -4,13 +4,24 @@ import lombok.Builder;
 import lombok.Getter;
 import toy.runningtoyprj.domain.entity.Member;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 @Getter
 public class MemberDto {
     private Long id;
 
+    @NotBlank
+    @Email(message = "이메일 형식을 맞춰주세요.")
     private String loginId;
+    @NotBlank
+    @Size(min = 2,max=20, message = "비밀번호를 2-20자 사이로 입력해주세요")
     private String password;
+    @Size(min=2)
     private String name;
+    @Min(2)
     private String dob;
 
     @Builder
