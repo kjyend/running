@@ -14,7 +14,10 @@ public class LoginService {
 
     public LoginDto login(String loginId, String password){ //로그인 회원이 있는지 검증한다.
         Member member = memberRepository.findByLoginId(loginId).filter(m -> m.getPassword().equals(password)).orElse(null);
-        LoginDto loginDto = member.toLoginDto();
-        return loginDto;
+        if(member!=null) {
+            return member.toLoginDto();
+        }else {
+            return null;
+        }
     }
 }

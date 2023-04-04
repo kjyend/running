@@ -55,7 +55,7 @@ public class LoginController {
 
         if(loginMember==null){ //db에 정보가 없는경우
             bindingResult.reject("loginFail","아이디 또는 비밀번호가 맞지 않습니다.");
-            return "login/login";
+            return "redirect:/login";
         }
 
         HttpSession session=request.getSession();//db에 있다면 세션값을 저장한다.
